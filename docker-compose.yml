@@ -1,0 +1,30 @@
+version: "2"
+
+services:
+  daemon-armhf:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.armhf
+    ports:
+      - "2222:22"
+    volumes:
+      - /tmp/:/tmp/
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/tmp/jenkins-slave:/var/tmp/jenkins-slave
+      #- ./authorized_keys:/authorized_keys:ro
+    #command:
+    #  - http://url.to/your/authorized_keys
+  daemon:
+    restart: always
+    build:
+      context: .
+    ports:
+      - "2222:22"
+    volumes:
+      - /tmp/:/tmp/
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/tmp/jenkins-slave:/var/tmp/jenkins-slave
+      #- ./authorized_keys:/authorized_keys:ro
+    #command:
+    #  - http://url.to/your/authorized_keys
