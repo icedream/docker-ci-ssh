@@ -2,8 +2,21 @@ FROM container4armhf/armhf-alpine:edge
 
 RUN echo "http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
-RUN apk add --no-cache openjdk8-jre-base docker openssl openssh tar gzip xz bzip2 &&\
-	update-ca-certificates
+RUN \
+	apk add --no-cache \
+		bzip2 \
+		cvs \
+		docker \
+		git \
+		gzip \
+		mercurial \
+		openjdk8-jre-base \
+		openssh \
+		openssl \
+		subversion \
+		tar \
+		xz \
+	&& update-ca-certificates
 
 ADD container-init.sh /usr/local/bin/init
 
